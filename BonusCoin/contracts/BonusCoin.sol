@@ -8,17 +8,21 @@ contract BonusCoin{
 
     event Transfer(address indexed _from, address indexed _to, uint256 _value);
 
-    function getBonusBalance(address addr) internal view returns(uint256){
+    function getBonusBalance(address addr) public view returns(uint256){
         return bonusBalances[addr];
     }
 
-    function sendBonusCoin(address receiver, uint amount) public returns(bool sufficient) {
+    function sendBonusCoin(address receiver, uint256 amount) public returns(bool sufficient) {
 		if (bonusBalances[msg.sender] < amount) return false;
 		bonusBalances[msg.sender] -= amount;
 		bonusBalances[receiver] += amount;
 		emit Transfer(msg.sender, receiver, amount);
 		return true;
 	}
+
+    function addBonusCoin(address _client, uint256 _amount) public pure virtual  {
+        //sendBonusCoin(_client, _amount);    
+    }
 
     function getAddress() public view returns(address){
         return _addr;

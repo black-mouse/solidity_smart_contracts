@@ -1,0 +1,11 @@
+// SPDX-License-Identifier: MIT
+pragma solidity <0.9.0;
+import "./BonusCoin.sol";
+
+
+contract PremiumBonusCoin is BonusCoin{
+
+  function addBonusCoin(address _client, uint256 _amount) public {
+        sendBonusCoin(_client, _amount  * 2);    
+    }
+}
