@@ -2,6 +2,8 @@
 pragma solidity <0.9.0;
 
 contract BonusCoin{
+    address private _addr;
+
     mapping(address => uint256) internal bonusBalances;
 
     event Transfer(address indexed _from, address indexed _to, uint256 _value);
@@ -17,4 +19,12 @@ contract BonusCoin{
 		emit Transfer(msg.sender, receiver, amount);
 		return true;
 	}
+
+    function getAddress() public view returns(address){
+        return _addr;
+    }
+
+    function getAddressPayable() public view returns(address payable){
+        return payable(msg.sender);
+    }
 }
