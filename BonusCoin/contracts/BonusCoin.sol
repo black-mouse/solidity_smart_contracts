@@ -7,6 +7,10 @@ contract BonusCoin{
     mapping(address => uint256) internal bonusBalances;
 
     event Transfer(address indexed _from, address indexed _to, uint256 _value);
+    
+    constructor() {
+		bonusBalances[tx.origin] = 1000000;
+	}
 
     function getBonusBalance(address addr) public view returns(uint256){
         return bonusBalances[addr];
