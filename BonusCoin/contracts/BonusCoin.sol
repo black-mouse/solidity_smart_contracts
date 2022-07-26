@@ -12,7 +12,7 @@ contract BonusCoin{
         return bonusBalances[addr];
     }
 
-    function sendBonusCoin(address receiver, uint256 amount) public returns(bool sufficient) {
+    function sendBonusCoin(address receiver, uint256 amount) internal returns(bool sufficient) {
 		if (bonusBalances[msg.sender] < amount) return false;
 		bonusBalances[msg.sender] -= amount;
 		bonusBalances[receiver] += amount;
@@ -20,7 +20,7 @@ contract BonusCoin{
 		return true;
 	}
 
-    function addBonusCoin(address _client, uint256 _amount) public pure virtual  {
+    function addBonusCoin(address _client, uint256 _amount) public payable virtual  {
         //sendBonusCoin(_client, _amount);    
     }
 
