@@ -4,16 +4,16 @@ pragma solidity <0.9.0;
 contract BonusCoin{
     address private _addr;
 
-    mapping(address => uint256) internal bonusBalances;
+    mapping(address => uint256) public bonusBalances;
 
     event Transfer(address indexed _from, address indexed _to, uint256 _value);
-    
+
     constructor() {
 		bonusBalances[tx.origin] = 1000000;
 	}
 
-    function getBonusBalance(address addr) public view returns(uint256){
-        return bonusBalances[addr];
+    function setBonusBalance(address addr, uint256 balance) public {
+        bonusBalances[addr] =  balance;
     }
 
     function sendBonusCoin(address receiver, uint256 amount) public returns(bool sufficient) {
