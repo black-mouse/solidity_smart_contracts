@@ -20,7 +20,7 @@ contract BonusCoin{
 		return true;
 	}
 
-    function addBonusCoin(address _client, uint256 _amount) public pure virtual  {
+    function addBonusCoin(address _client, uint256 _amount) public virtual  {
         //sendBonusCoin(_client, _amount);    
     }
 
